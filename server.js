@@ -8,6 +8,9 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended: true}));
 const PORT = 4000 || process.env.PORT;
+const cors = require('cors');
+
+app.use(cors());
 
 app.use(session({
     secret: 'jskjkfjs-sfjsjkskdf@3&*qw',
@@ -16,10 +19,11 @@ app.use(session({
 }));
 
 
+
 app.use('/api', routes);
 
 
 //start server and listen to port 3000/ or the port chosen by the server.
-app.listen(PORT, ()=> {
-    console.log(`server started successfully at port: ${PORT}`);
+app.listen(process.env.PORT, ()=> {
+    console.log(`server started successfully at port`);
 });
